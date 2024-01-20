@@ -16,14 +16,14 @@ export default function Columns () {
   const columns = [
     {
       name: <NameTable text="Name" />,
-      cell: (row: Product) => <p className='text-sm'>{row.name}</p>,
+      cell: (row: Product) => <p className='text-sm [text-wrap:pretty]'>{row.name}</p>,
       center: true,
       width: '10rem'
     },
     {
       name: <NameTable text="Image" />,
       cell: (row: Product) => (
-        <picture className='block m-2 w-16 h-w-16'>
+        <picture className='block m-2 w-16 h-16'>
           <img className='object-contain w-full h-full' src={row.image[0]} alt="" />
         </picture>
       ),
