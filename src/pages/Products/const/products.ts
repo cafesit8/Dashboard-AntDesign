@@ -25,4 +25,13 @@ export const data = [{
   stock: '8',
   price: '2.50',
   post: 'no post'
+}, {
+  id: crypto.randomUUID(),
+  name: 'Leche Entera Deslactosada 1 Litro',
+  description: 'Leche Entera Deslactosada 1 Litro',
+  image: ['https://acdn.mitiendanube.com/stores/093/780/products/91-leche-deslactosada-la-serenisima1-f8eae6506fe899258d15936561816474-640-0.jpeg'],
+  category: 'drinks',
+  stock: '2',
+  price: '2.50',
+  post: 'no post'
 }]
