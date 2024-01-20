@@ -26,7 +26,7 @@ function getItem (
   } as MenuItem
 }
 
-const items: MenuItem[] = [
+export const items: MenuItem[] = [
   getItem(<span>Products</span>, '1', <PieChartOutlined />),
   getItem('Option 2', '2', <DesktopOutlined />),
   getItem('Option 3', '3', <ContainerOutlined />),

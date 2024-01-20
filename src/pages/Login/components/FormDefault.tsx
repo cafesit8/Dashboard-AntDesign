@@ -29,6 +29,7 @@ const FormDeafult: FC = () => {
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
+      <h2 className='font-semibold text-2xl mb-3'>Login</h2>
       <Form.Item<FieldType>
         name="email"
       >
@@ -45,7 +46,7 @@ const FormDeafult: FC = () => {
         wrapperCol={{ offset: 0, span: 10 }}
         className='-mt-3 mb-3'
       >
-        <Checkbox>Recuérdame</Checkbox>
+        <Checkbox>Remember me</Checkbox>
       </Form.Item>
       <Form.Item className='mb-0' wrapperCol={{ offset: 0 }}>
         <Button type="primary" htmlType="submit" className='bg-[#1677ff] w-full'>
