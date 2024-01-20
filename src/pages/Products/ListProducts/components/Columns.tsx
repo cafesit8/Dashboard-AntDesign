@@ -16,7 +16,7 @@ export default function Columns () {
   const columns = [
     {
       name: <NameTable text="Name" />,
-      cell: (row: Product) => <p className='text-sm [text-wrap:pretty]'>{row.name}</p>,
+      cell: (row: Product) => <p className='text-sm [text-wrap:pretty] font-light'>{row.name}</p>,
       center: true,
       width: '10rem'
     },
@@ -31,12 +31,12 @@ export default function Columns () {
     },
     {
       name: <NameTable text="Category" />,
-      cell: (row: Product) => <span className='font-["Outfit_Variable"]'>{row.category}</span>,
+      cell: (row: Product) => <span className='font-["Outfit_Variable"] sm:text-base text-sm font-light'>{row.category}</span>,
       center: true
     },
     {
       name: <NameTable text="Stock" />,
-      cell: (row: Product) => row.stock,
+      cell: (row: Product) => <span>{row.stock}</span>,
       center: true
     },
     {
