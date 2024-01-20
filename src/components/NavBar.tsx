@@ -1,24 +1,32 @@
 import { useNavigate } from 'react-router-dom'
+import { useDrawerStore } from '../store/useDrawer'
+import { Button } from 'antd'
+
+function IconLeft () {
+  return (
+    <svg className="text-white" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6l16 0" /><path d="M4 12l10 0" /><path d="M4 18l14 0" /></svg>
+  )
+}
 
 export default function NavBar () {
+  const handleOpen = useDrawerStore(state => state.handleOpen)
   const navigate = useNavigate()
   return (
-    <nav className="bg-white rounded-lg md:mb-5 mb-2">
-      <div className="w-full flex items-center md:justify-end justify-center mx-auto py-2 md:px-4 px-0">
-        <div className="w-auto" id="navbar-default">
-          <ul className="font-medium flex md:justify-center justify-between w-full items-center md:p-0 rounded-lg flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
-            <li>
-              <a href="#" className="block text-sm md:text-base py-1 px-3 text-gray-800 rounded md:bg-transparent md:p-0" aria-current="page">Home</a>
-            </li>
-            <li>
-              <a href="#" className="block text-sm md:text-base py-1 px-3 text-gray-800 rounded md:border-0  md:p-0 dark:text-[#124a67]">About</a>
-            </li>
-            <li className="py-1 px-3">
-              <button onClick={() => navigate('/login')} className="text-gray-800 text-sm md:text-base">Cerrar Sesión</button>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <nav className="bg-white rounded-lg md:mb-5 mb-2 p-3 flex sm:justify-end justify-between items-center">
+      <Button onClick={handleOpen} style={{ width: 'auto' }} className='bg-seagull-400 sm:hidden grid place-content-center hover:bg-[#053047]!'>
+        <IconLeft />
+      </Button>
+      <ul className="flex gap-5">
+        <li>
+          <span className="text-seagull-800">Home</span>
+        </li>
+        <li>
+          <span className="text-seagull-800">About</span>
+        </li>
+        <li className="">
+          <button onClick={() => navigate('/login')} className="text-gray-800 text-base">Cerrar Sesión</button>
+        </li>
+      </ul>
     </nav>
   )
 }
