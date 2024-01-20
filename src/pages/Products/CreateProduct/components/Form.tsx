@@ -17,6 +17,7 @@ type Props = {
 
 export default function Form ({ handleSendData, fileInputRef, photos, handleDeleteImage, handleFileChange, handleSubmit, errors, register, setValue }: Props) {
   const { productSelected } = useProductsStore()
+  const selected = Object.keys(productSelected).length > 0
 
   return (
     <form onSubmit={handleSubmit(handleSendData)} className="form">
@@ -32,15 +33,15 @@ export default function Form ({ handleSendData, fileInputRef, photos, handleDele
         </label>
         <label>
           <span className='text-sm'>Description:</span>
-          <input type="text" className={`${errors.description ? 'outline-red-500' : 'outline-seagull-500'} bg-white border border-gray-300 text-gray-900 text-sm rounded-md block w-full py-1.5 px-3`} placeholder="ej: This product help you..." {...register('description')} autoComplete='off' />
+          <textarea id="message" rows={4} className={`${errors.description ? 'outline-red-500' : 'outline-seagull-500'} bg-white border border-gray-300 text-gray-900 text-sm rounded-md block w-full py-1.5 px-3`} placeholder="Write your description here..." {...register('description')} ></textarea>
           {errors.description && <span className='text-sm text-red-500 ml-1'>{errors.description.message}</span>}
         </label>
         <div className='mt-2'>
           <input className='hidden' ref={fileInputRef} accept='image/*' type="file" id="fileInput" multiple onChange={handleFileChange} />
           <label htmlFor="fileInput">
-            <div className={'border-seagull-600 border-2 border-dashed rounded-lg flex justify-center items-center flex-col p-4 text-center cursor-pointer'}>
+            <div className={'border-seagull-500 border-2 border-dashed rounded-lg flex justify-center items-center flex-col p-4 text-center cursor-pointer'}>
               <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-cloud-upload" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" /><path d="M9 15l3 -3l3 3" /><path d="M12 12l0 9" /></svg>
-              <p className='text-seagull-950'>Haz clic aquí para seleccionar imágenes</p>
+              <p className='text-seagull-950'>Click here to select images</p>
             </div>
           </label>
           {(photos.length > 0 || productSelected?.image) && (
@@ -96,6 +97,7 @@ export default function Form ({ handleSendData, fileInputRef, photos, handleDele
             <Select
               status={errors.post ? 'error' : ''}
               defaultValue={productSelected.post}
+              placeholder= 'Yes'
               className='block'
               style={{ width: '100%' }}
               onChange={(e) => setValue('post', (e))}
@@ -107,7 +109,7 @@ export default function Form ({ handleSendData, fileInputRef, photos, handleDele
           </label>
         </div>
       </article>
-      <Button htmlType='submit' className='[grid-area:button] border-none w-full self-end bg-white'><span className='text-black'>Guardar</span></Button>
+      <Button htmlType='submit' className='[grid-area:button] border-none w-full self-end bg-seagull-400'><span className='text-white font-["Outfit_Variable"]'>{selected ? 'Update Product' : 'Save Product'}</span></Button>
     </form>
   )
 }
