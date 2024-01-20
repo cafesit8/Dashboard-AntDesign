@@ -37,7 +37,7 @@ function getItem (
 
 export const items: MenuItem[] = [
   getItem('Products', '1', '/dashboard/products/list', <PieChartOutlined />),
-  getItem('Statistics', '2', '/dashboard/products/list', <BarChartOutlined />),
+  getItem('Statistics', '2', '/dashboard/statistics', <BarChartOutlined />),
   getItem('Option 3', '3', '/dashboard/products/list', <ContainerOutlined />),
 
   getItem('Navigation One', 'sub1', '', <MailOutlined />, [
