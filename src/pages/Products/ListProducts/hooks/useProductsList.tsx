@@ -16,19 +16,19 @@ export default function useProductsList ({ selectProduct, search, products, cate
 
   const findProduct = useMemo(() => {
     if (search === '') return [...products]
-    if (search !== '') return [...products].filter((item: any) => item.name.toLowerCase().includes(search.toLowerCase()))
+    if (search !== '') return [...products].filter((item: Product) => item.name.toLowerCase().includes(search.toLowerCase()))
     return [...products]
   }, [search, products])
 
   const categoryFiltered = useMemo(() => {
     if (category === '' || category === 'all') return [...findProduct]
-    if (category !== '') return [...findProduct].filter((item: any) => item.category.toLowerCase().includes(category.toLowerCase()))
+    if (category !== '') return [...findProduct].filter((item: Product) => item.category.toLowerCase().includes(category.toLowerCase()))
     return [...findProduct]
   }, [category, findProduct])
 
   const postFiltered = useMemo(() => {
     if (post === '' || post === 'both') return [...categoryFiltered]
-    if (post !== '') return [...categoryFiltered].filter((item: any) => item.post.toLowerCase().includes(post.toLowerCase()))
+    if (post !== '') return [...categoryFiltered].filter((item: Product) => item.post.toLowerCase().includes(post.toLowerCase()))
     return [...categoryFiltered]
   }, [categoryFiltered, post])
 
