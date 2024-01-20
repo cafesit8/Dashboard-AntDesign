@@ -8,6 +8,9 @@ dependencies:
   '@ant-design/icons':
     specifier: ^5.2.6
     version: 5.2.6(react-dom@18.2.0)(react@18.2.0)
+  '@fontsource-variable/outfit':
+    specifier: ^5.0.8
+    version: 5.0.8
   '@hookform/resolvers':
     specifier: ^3.3.4
     version: 3.3.4(react-hook-form@7.49.3)
@@ -416,6 +419,10 @@ packages:
     resolution: {integrity: sha512-Ag+9YM4ocKQx9AarydN0KY2j0ErMHNIocPDrVo8zAE44xLTjEtz81OdR68/cydGtk6m6jDb5Za3r2useMzYmSw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@fontsource-variable/outfit@5.0.8:
+    resolution: {integrity: sha512-j4JHCbuk2+Nl7PwTVT+RJKTDMDw7TWWt/85CIucD7KvOS7Iv0IiymE5ur21/aFbTwamOHrXX91WrQZHN7QDrmw==}
+    dev: false
 
   /@hookform/resolvers@3.3.4(react-hook-form@7.49.3):
     resolution: {integrity: sha512-o5cgpGOuJYrd+iMKvkttOclgwRW86EsWJZZRC23prf0uU2i48Htq4PuT73AVb9ionFyZrwYEITuOFGF+BydEtQ==}

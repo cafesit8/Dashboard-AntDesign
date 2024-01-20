@@ -61,7 +61,7 @@ export default function Header ({ setSearch, setCategory, setPost }: Props) {
               ]}
             />
           </div>
-          <Button onClick={handleClick} className='bg-seagull-400 hover:bg-seagull-800! w-full lg:w-auto'><span className='text-white'>Add Product</span></Button>
+          <Button onClick={handleClick} className='bg-seagull-400 hover:bg-seagull-800! w-full font-["Outfit_Variable"] lg:w-auto'><span className='text-white'>Add Product</span></Button>
         </div>
       </div>
     </header>

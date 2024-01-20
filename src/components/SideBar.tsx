@@ -68,7 +68,7 @@ export function SideBar () {
         mode="inline"
         inlineCollapsed={collapsed}
         items={items}
-        className={`${collapsed ? 'w-[50px] md:w-[70px]' : 'w-auto'} rounded-lg`}
+        className={`${collapsed ? 'w-[50px] md:w-[70px]' : 'w-auto'} rounded-lg font-["Outfit_Variable"]`}
       />
     </div>
   )

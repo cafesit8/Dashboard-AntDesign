@@ -5,6 +5,7 @@ import { styles } from '../../../styles/customStylesTable'
 import { useProductsStore } from '../store/productsStore'
 import { useState } from 'react'
 import useProductsList from './hooks/useProductsList'
+import '@fontsource-variable/outfit'
 
 export default function ProductsList () {
   const { products, selectProduct } = useProductsStore()

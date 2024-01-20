@@ -31,7 +31,7 @@ export default function Columns () {
     },
     {
       name: <NameTable text="Category" />,
-      cell: (row: Product) => row.category,
+      cell: (row: Product) => <span className='font-["Outfit_Variable"]'>{row.category}</span>,
       center: true
     },
     {
