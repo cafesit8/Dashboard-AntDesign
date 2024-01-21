@@ -1,0 +1,18 @@
+.statistics{
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  grid-template-areas: 
+  "uno dos"
+  "sale sale";
+}
+
+@media (max-width: 640px) {
+  .statistics {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 9px;
+    grid-template-areas: 
+    "uno"
+    "dos"
+    "sale";
+  }
+}
