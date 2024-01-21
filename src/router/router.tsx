@@ -5,6 +5,13 @@ import ProductsList from '../pages/Products/ListProducts/ProductsList'
 import { Suspense, lazy } from 'react'
 const CreateProduct = lazy(() => import('../pages/Products/CreateProduct/CreateProduct'))
 const Dashboard = lazy(() => import('../pages/Dashboard/Dashboard'))
+const Statistics = lazy(() => import('../pages/Statistics/Statistics'))
+
+function Load () {
+  return (
+    <div className='w-full bg-seagull-50 grid place-content-center'>Cargando</div>
+  )
+}
 
 export default function Router () {
   const element = useRoutes([
@@ -14,7 +21,7 @@ export default function Router () {
     },
     {
       path: '/dashboard',
-      element: <ProtectedRoute><Suspense fallback={<div className='w-full bg-seagull-50 grid place-content-center'>Cargando</div>}>
+      element: <ProtectedRoute><Suspense fallback={<div className='w-full h-screen bg-seagull-50 grid place-content-center'>Cargando</div>}>
         <Dashboard />
       </Suspense></ProtectedRoute>,
       children: [
@@ -22,10 +29,18 @@ export default function Router () {
         { path: 'products/list', element: <ProtectedRoute><ProductsList /></ProtectedRoute> },
         {
           path: 'products/create',
-          element: <Suspense fallback={<div className='w-full bg-seagull-50 grid place-content-center'>Cargando</div>}>
-            <CreateProduct />
-          </Suspense>
+          element: <Suspense fallback={<Load />}><CreateProduct /></Suspense>
         }
+      ]
+    },
+    {
+      path: '/dashboard',
+      element: <ProtectedRoute><Suspense fallback={<div className='w-full h-screen bg-seagull-50 grid place-content-center'>Cargando</div>}>
+        <Dashboard />
+      </Suspense></ProtectedRoute>,
+      children: [
+        { element: <Navigate to={'/dashboard/statistics'} replace={true} state={{ logged: true }} />, index: true },
+        { path: 'statistics', element: <ProtectedRoute><Suspense fallback={<Load />}><Statistics /></Suspense></ProtectedRoute> }
       ]
     },
     {
