@@ -82,7 +82,7 @@ export function MenuDefault ({ collapsed, fn }: { collapsed?: boolean, fn?: () =
               </Menu.Item>
             ))}
           </Menu.SubMenu>
-          : <Menu.Item onClick={() => handleNavigate(item.href!)} key={item.key} icon={item.icon}>
+          : <Menu.Item className='focus:bg-seagull-50 ' onClick={() => handleNavigate(item.href!)} key={item.key} icon={item.icon}>
             {item.label}
           </Menu.Item>
       ))}
