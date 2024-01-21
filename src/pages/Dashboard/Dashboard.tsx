@@ -6,7 +6,7 @@ const DrawerDefault = lazy(() => import('../../components/Drawer'))
 
 export default function Dashboard () {
   return (
-    <div className='md:p-5 px-3 py-4 bg-[#edf9fa] min-h-screen flex md:gap-5 gap-2'>
+    <div className='md:p-5 px-3 py-4 bg-[#edf9fa] min-h-screen h-dvh flex md:gap-5 gap-2'>
       <aside className='w-auto sm:block hidden'>
         <SideBar />
       </aside>
