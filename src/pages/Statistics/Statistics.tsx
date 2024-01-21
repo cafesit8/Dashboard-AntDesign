@@ -1,6 +1,7 @@
 import { chartNoSaleDrinks, chartNoSalePastas } from './const/chart'
 import '../../styles/statistics.css'
 import { Suspense, lazy } from 'react'
+import { StatisticsSkeletons } from '../../components/Skeletons'
 const NoSale = lazy(() => import('./components/ProductNoSale'))
 const SaleCard = lazy(() => import('./components/Sale'))
 
@@ -12,7 +13,7 @@ export default function Statistics () {
         <p className='text-seagull-800/80 sm:text-base text-sm'>In this section you will be able to see the statistics of the products, sales and non-sales.</p>
       </header>
       <div className='statistics grid'>
-        <Suspense fallback={<div className='bg-seagull-50 grid place-content-center w-full h-full'>Cargando...</div>}>
+        <Suspense fallback={<StatisticsSkeletons />}>
           <NoSale
             title='Unsold Pastas for the mid-year of 2023'
             gridArea='uno'
@@ -20,7 +21,7 @@ export default function Statistics () {
             list={chartNoSalePastas}
           />
         </Suspense>
-        <Suspense fallback={<div className='bg-seagull-50 grid place-content-center w-full h-full'>Cargando...</div>}>
+        <Suspense fallback={<StatisticsSkeletons />}>
           <NoSale
             title='Unsold Drinks for the mid-year of 2023'
             gridArea='dos'
@@ -28,7 +29,7 @@ export default function Statistics () {
             list={chartNoSaleDrinks}
           />
         </Suspense>
-        <Suspense fallback={<div className='bg-seagull-50 grid place-content-center w-full h-full'>Cargando...</div>}>
+        <Suspense fallback={<StatisticsSkeletons />}>
           <SaleCard />
         </Suspense>
       </div>

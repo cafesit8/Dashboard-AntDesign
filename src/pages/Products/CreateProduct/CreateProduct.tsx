@@ -2,6 +2,7 @@ import useCreateProduct from './hooks/useCreateProduct'
 import Header from './components/Header'
 import { Suspense, lazy } from 'react'
 import '../../../styles/form.css'
+import Loader from '../../../components/Loader'
 const Form = lazy(() => import('./components/Form'))
 
 export default function CreateProduct () {
@@ -22,7 +23,7 @@ export default function CreateProduct () {
     <section className='flex flex-col gap-5'>
       <main>
         <Header list={breadcrumb} />
-        <Suspense fallback={<span>Cargando</span>}>
+        <Suspense fallback={<Loader />}>
           <Form
             fileInputRef={fileInputRef}
             photos={photos}
