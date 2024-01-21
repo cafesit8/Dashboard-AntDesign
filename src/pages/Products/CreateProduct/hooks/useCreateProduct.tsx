@@ -4,6 +4,7 @@ import { useProductsStore } from '../../store/productsStore'
 import { Product } from '../../../../types/Products/types'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { toast } from 'sonner'
 import * as Yup from 'yup'
 
 export default function useCreateProduct () {
@@ -53,8 +54,10 @@ export default function useCreateProduct () {
   function handleSendData (data: Product) {
     if (Object.keys(productSelected).length > 0) {
       updateProduct(data.id!, data)
+      toast.success('Product updated successfully')
     } else {
       addProduct({ ...data, id: crypto.randomUUID() })
+      toast.success('Product created successfully')
     }
     navigate('/dashboard/products/list', { replace: true, state: { logged: true } })
   }
