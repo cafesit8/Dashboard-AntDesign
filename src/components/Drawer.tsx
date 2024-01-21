@@ -1,6 +1,6 @@
-import { Drawer, Menu } from 'antd'
+import { Drawer } from 'antd'
 import { useDrawerStore } from '../store/useDrawer'
-import { items } from './SideBar'
+import { MenuDefault } from './SideBar'
 
 function CloseIcon ({ fn }: { fn: () => void }) {
   return (
@@ -24,13 +24,7 @@ const DrawerDefault = () => {
         width={250}
         styles={{ body: { padding: '0px' }, header: { padding: '10px 15px' } }}
       >
-        <Menu
-          defaultSelectedKeys={['1']}
-          mode="inline"
-          inlineCollapsed={false}
-          items={items}
-          className={'w-full'}
-        />
+        <MenuDefault fn={handleOpen} />
       </Drawer>
     </>
   )

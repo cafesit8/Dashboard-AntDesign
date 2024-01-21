@@ -60,40 +60,46 @@ function IconRight () {
   )
 }
 
-export function SideBar () {
-  const [collapsed, setCollapsed] = useState(false)
+export function MenuDefault ({ collapsed, fn }: { collapsed?: boolean, fn?: () => void }) {
   const navigate = useNavigate()
-  const toggleCollapsed = () => setCollapsed(!collapsed)
-
   function handleNavigate (href: string) {
     navigate(href, { replace: true, state: { logged: true } })
+    fn && fn()
   }
+  return (
+    <Menu
+      defaultSelectedKeys={['1']}
+      mode="inline"
+      inlineCollapsed={collapsed}
+      className={`${collapsed ? 'w-[50px] md:w-[70px]' : 'w-auto'} rounded-lg font-["Outfit_Variable"]`}
+    >
+      {items.map((item: MenuItem) => (
+        (item.children)
+          ? <Menu.SubMenu key={item.key} title={item.label} icon={item.icon}>
+            {item.children.map((childItem: MenuItem) => (
+              <Menu.Item key={childItem.key} icon={childItem.icon}>
+                {childItem.label}
+              </Menu.Item>
+            ))}
+          </Menu.SubMenu>
+          : <Menu.Item onClick={() => handleNavigate(item.href!)} key={item.key} icon={item.icon}>
+            {item.label}
+          </Menu.Item>
+      ))}
+    </Menu>
+  )
+}
+
+export function SideBar () {
+  const [collapsed, setCollapsed] = useState(false)
+  const toggleCollapsed = () => setCollapsed(!collapsed)
 
   return (
     <div className={`min-w-[50px] ${collapsed ? 'w-[50px] md:w-[70px]' : 'lg:w-[260px] w-[210px]'}`}>
       <Button onClick={toggleCollapsed} style={{ marginBottom: 20, width: '100%', height: 50 }} className='bg-seagull-400 grid place-content-center hover:bg-[#053047]!'>
         {collapsed ? <IconRight /> : <IconLeft />}
       </Button>
-      <Menu
-        defaultSelectedKeys={['1']}
-        mode="inline"
-        inlineCollapsed={collapsed}
-        className={`${collapsed ? 'w-[50px] md:w-[70px]' : 'w-auto'} rounded-lg font-["Outfit_Variable"]`}
-      >
-        {items.map((item: MenuItem) => (
-          (item.children)
-            ? <Menu.SubMenu key={item.key} title={item.label} icon={item.icon}>
-              {item.children.map((childItem: MenuItem) => (
-                <Menu.Item key={childItem.key} icon={childItem.icon}>
-                  {childItem.label}
-                </Menu.Item>
-              ))}
-            </Menu.SubMenu>
-            : <Menu.Item onClick={() => handleNavigate(item.href!)} key={item.key} icon={item.icon}>
-              {item.label}
-            </Menu.Item>
-        ))}
-      </Menu>
+      <MenuDefault collapsed={collapsed} />
     </div>
   )
 }

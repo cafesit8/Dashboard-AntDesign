@@ -16,7 +16,7 @@ export default function NavBar () {
       <Button onClick={handleOpen} style={{ width: 'auto' }} className='bg-seagull-400 sm:hidden grid place-content-center hover:bg-[#053047]!'>
         <IconLeft />
       </Button>
-      <ul className="flex gap-5">
+      <ul className="flex sm:gap-5 gap-3">
         <li>
           <span className="text-seagull-800">Home</span>
         </li>
